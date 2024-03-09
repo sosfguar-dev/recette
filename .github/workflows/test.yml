@@ -4,22 +4,19 @@ on:
   push: # se ejecuto el action cada que se hace push a las ramas espesificadas, no es necesario a mas
     branches:
       - main
-      - develop 
 
-jobs: 
+jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    
-    - name: Checkout Repository # acceder al codigo del repositorio. hace un checkout del repo y acceder a el para su uso
-      uses: actions/checkout@v4   
-    - name: Setup Node.js # configurar node
-      uses: actions/setup-node@v4
-      with:
-        node-version: "18"
-    - name: Install dependencies
-      run: npm ci
-    - name: Run tests
-      run: npm test
+      - name: Checkout Repository # acceder al codigo del repositorio. hace un checkout del repo y acceder a el para su uso
+        uses: actions/checkout@v4
+      - name: Setup Node.js # configurar node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
